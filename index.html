@@ -37,12 +37,11 @@
       </div>
       <div class="meta">
         <span class="chip">🎓 BS Computer Science · 1st Year</span>
-  
-      <span class="chip">🏰University of the Cordilleras</span>
+        <span class="chip">🏰 University of the Cordilleras</span>
       </div>
       <p class="bio">I build things the way I build a base: plan the layout, upgrade a little every day, and test it against real attacks.</p>
       <div class="cta">
-        <a class="btn big green" href="mailto:you@example.com" data-sfx="click">Contact Me</a>
+        <a class="btn big green" href="mailto:darneiljakepadaco@gmail.com" data-sfx="click">Contact Me</a>
         <a class="btn big" href="#" id="resume" data-sfx="click">Download Army Roll (Resume)</a>
       </div>
     </div>
@@ -57,9 +56,11 @@
       <div class="pi-avatar"><img src="image.jpeg" alt="Darneil Jake B. Padaco"></div>
       <div class="pi-id">
         <h3 class="gold-text">Darneil Jake B. Padaco</h3>
-        <div class="pi-class">Class: Aspiring Game Developer</div>
-        <div class="pi-hearts" role="img" aria-label="Full health">❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</div>
-        <div class="bar-row"><span>LVL 1</span><div class="track"><div class="fill xp" data-w="22"></div></div></div>
+        <div class="pi-class">Class: Aspiring Software Engineer</div>
+        <div class="pi-counters">
+          <div class="counter"><b data-count="250">0</b><small>⚔️ DPS · lines of code / day</small></div>
+          <div class="counter"><b data-count="1200">0</b><small>❤️ HP · cups of coffee</small></div>
+        </div>
       </div>
     </div>
 
@@ -67,18 +68,18 @@
       <h3 class="pi-h">📋 Player Info</h3>
       <dl class="pi-list">
         <div><dt>Full Name</dt><dd>Darneil Jake B. Padaco</dd></div>
-        <div><dt>Gender</dt><dd class="todo">[Add gender]</dd></div>
+        <div><dt>Gender</dt><dd>Male</dd></div>
         <div><dt>Birthday</dt><dd>March 28, 2004</dd></div>
         <div><dt>Age</dt><dd id="age">22 years old</dd></div>
         <div><dt>Location</dt><dd>Virac, Itogon, Benguet</dd></div>
-        <div><dt>Status</dt><dd class="todo">[Add status]</dd></div>
+        <div><dt>Status</dt><dd>Single</dd></div>
         <div><dt>College</dt><dd>University of the Cordilleras</dd></div>
         <div><dt>Program</dt><dd>BS Computer Science</dd></div>
         <div><dt>Year Level</dt><dd>1st Year</dd></div>
         <div><dt>Hobbies</dt><dd>Playing video games</dd></div>
         <div><dt>Skills</dt><dd>Java, Python, HTML / CSS, JavaScript (learning)</dd></div>
-        <div><dt>Phone</dt><dd class="todo">[Add phone number]</dd></div>
-        <div class="wide"><dt>Email</dt><dd class="todo">[Add email address]</dd></div>
+        <div><dt>Phone</dt><dd>09765606176</dd></div>
+        <div class="wide"><dt>Email</dt><dd>darneiljakepadaco@gmail.com</dd></div>
       </dl>
     </div>
 
@@ -107,11 +108,14 @@
 </section>
 
 <section id="achievement">
-  <div class="ribbon"><span>Achievements</span></div>
+  <div class="ribbon"><span>Achievements &amp; Certificates</span></div>
   <div class="panel">
     <div class="trophy-head">
       <div class="trophies">🏆 <span id="tcount">3,450</span> Trophies</div>
-      <span class="chip">Claimed: <b id="cc">0</b> / <b id="ct">0</b></span>
+      <div class="row">
+        <span class="chip">📜 15 Scrolls Unlocked</span>
+        <span class="chip">Claimed: <b id="cc">0</b> / <b id="ct">0</b></span>
+      </div>
     </div>
     <div class="ach-list" id="achs"></div>
   </div>
@@ -129,7 +133,22 @@
   </div>
 </section>
 </main>
+
 <div class="pager"><button class="btn big" id="prev" type="button">◀ Previous</button><div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div><button class="btn big green" id="next" type="button">Next ▶</button></div>
+
+<dialog id="cert-modal" class="cert-modal">
+  <div class="cert-box">
+    <div class="cert-top">
+      <h3 id="cert-title" class="gold-text">Certificate</h3>
+      <button type="button" class="btn purple" id="cert-close" aria-label="Close certificate">✖</button>
+    </div>
+    <p id="cert-meta" class="cert-meta"></p>
+    <div class="cert-frame">
+      <img id="cert-img" src="" alt="Certificate preview">
+    </div>
+  </div>
+</dialog>
+
 <div id="toast" role="status" aria-live="polite"></div>
 
 <script src="script.js"></script>

@@ -100,6 +100,26 @@ h1{font-size:clamp(2.6rem,9vw,5rem);line-height:1;margin:14px 0 6px}
 .ach.claimed{filter:saturate(.7)}
 .ach.claimed .btn{background:linear-gradient(#8f8f8f,#5c5c5c);border-color:#2b2b2b;color:#e6e6e6;text-shadow:0 1px 0 #000;box-shadow:inset 0 2px 0 #bbb,0 5px 0 #222}
 
+/* achievement card details & scroll button */
+.ach-body{display:flex;flex-direction:column;min-width:0}
+.ach-top{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:.78rem;margin-bottom:3px}
+.ach-date{color:var(--gold1);font-weight:600}
+.ach-cat{background:#2a170a;border:1px solid var(--gold2);border-radius:6px;padding:1px 7px;color:#f1dfba;white-space:nowrap}
+.ach-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
+.ach-actions .btn{margin-top:0}
+.btn.view-cert{background:linear-gradient(#7dc4ff,#2c7be5 55%,#1852a8);border-color:#0d2d66;color:#fff;text-shadow:0 1px 0 #0d2d66;box-shadow:inset 0 2px 0 #bfe2ff,0 5px 0 #123978,0 8px 8px rgba(0,0,0,.45)}
+.btn.view-cert:active{box-shadow:inset 0 2px 0 #bfe2ff,0 1px 0 #123978}
+
+/* certificate preview modal */
+.cert-modal{border:none;padding:0;background:transparent;max-width:min(860px,94vw);width:100%;color:var(--text)}
+.cert-modal::backdrop{background:rgba(10,5,2,.82);backdrop-filter:blur(3px)}
+.cert-box{background:linear-gradient(#7a5532,#4d321c);border:5px solid var(--wood3);border-radius:18px;padding:18px;box-shadow:inset 0 0 0 3px var(--gold2),0 14px 30px rgba(0,0,0,.75)}
+.cert-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.cert-top h3{font-size:1.5rem}
+.cert-meta{margin:4px 0 12px;color:#f1dfba;font-size:.95rem}
+.cert-frame{background:#1b0e06;border:3px solid var(--gold2);border-radius:12px;padding:8px;display:grid;place-items:center;max-height:72vh;overflow:auto}
+.cert-frame img{max-width:100%;max-height:68vh;width:auto;height:auto;border-radius:6px;display:block}
+
 /* family */
 .banner{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-bottom:20px}
 .crest{width:84px;height:96px;display:grid;place-items:center;font-size:2.4rem;background:linear-gradient(#e0224a,#7a0b28);border:5px solid var(--gold2);clip-path:polygon(0 0,100% 0,100% 62%,50% 100%,0 62%);padding-bottom:12px}
@@ -144,8 +164,11 @@ footer{text-align:center;padding:40px 16px 60px;color:#d6c39a}
 .pi-id{flex:1;min-width:0}
 .pi-id h3{font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.1}
 .pi-class{color:var(--green);font-weight:600;margin:4px 0 6px}
-.pi-hearts{font-size:1.05rem;letter-spacing:1px;margin-bottom:8px}
 .pi-id .bar-row span{width:auto}
+.pi-counters{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.pi-counters .counter{background:#2a170a;border:3px solid #120a04;border-radius:12px;padding:8px 12px;box-shadow:inset 0 3px 6px #000}
+.pi-counters .counter b{display:block;font-family:'Lilita One',sans-serif;font-size:1.5rem;color:var(--gold1);text-shadow:0 2px 0 #000;font-weight:400}
+.pi-counters .counter small{display:block;color:#d6c39a;font-size:.78rem;line-height:1.25}
 .pi-h{font-size:1.35rem;color:var(--gold1);text-shadow:0 2px 0 #000;margin-bottom:12px}
 .pi-list{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;margin:0}
 .pi-list>div{display:grid;grid-template-columns:96px 1fr;gap:8px;padding:7px 0;border-bottom:2px dashed rgba(255,243,176,.22)}
@@ -173,12 +196,10 @@ footer{text-align:center;padding:40px 16px 60px;color:#d6c39a}
 @media (max-width:900px){.pi-hero,.pi-info,.pi-about,.pi-adv,.pi-inv{grid-column:span 12}}
 @media (max-width:560px){.pi-list{grid-template-columns:1fr}.pi-avatar{width:80px;height:80px}}
 
-
 /* page navigation */
 .btn.nav.current{background:linear-gradient(#b6f26a,#6fd13a 55%,#3f9a1a);border-color:#1f5a08;color:#103a00;text-shadow:0 1px 0 #d6ffa8;
   box-shadow:inset 0 2px 0 #e4ffc0,0 5px 0 #25600c,0 8px 8px rgba(0,0,0,.45)}
 @media (max-width:640px){.bar{justify-content:center}.logo{width:100%;justify-content:center}nav{margin:0 auto;justify-content:center}.btn.nav{padding:5px 10px;font-size:.9rem}}
-
 
 /* fit every page on one screen (desktop / laptop); phones keep normal scrolling */
 @media (min-width:901px){
@@ -214,8 +235,10 @@ footer{text-align:center;padding:40px 16px 60px;color:#d6c39a}
   #about .pi-avatar{width:6.5em;height:6.5em}
   #about .pi-id h3{font-size:1.7em}
   #about .pi-class{margin:.2em 0 .3em}
-  #about .pi-hearts{font-size:1em;margin-bottom:.4em}
-  #about .pi-id .bar-row{font-size:.9em}
+  #about .pi-counters{gap:.5em;margin-top:.3em}
+  #about .pi-counters .counter{padding:.4em .6em;border-width:2px}
+  #about .pi-counters .counter b{font-size:1.3em}
+  #about .pi-counters .counter small{font-size:.7em}
   #about .track{height:1.1em}
   #about .pi-list{gap:0 1.6em}
   #about .pi-list>div{grid-template-columns:6.2em 1fr;padding:.25em 0;gap:.5em}
@@ -229,19 +252,25 @@ footer{text-align:center;padding:40px 16px 60px;color:#d6c39a}
   #about .slot-detail b{font-size:1.1em}
   #about .slot-hint{margin:.5em 0 0;font-size:.8em}
 
-  /* achievements + family */
-  #achievement.active,#family.active{justify-content:center}
-  #achievement .panel,#family .panel{margin:0;padding:.9em 1em}
-  #achievement .trophy-head{margin-bottom:.8em}
-  #achievement .trophies{font-size:1.5em;padding:.15em .8em}
-  #achievement .ach-list{grid-template-columns:repeat(4,minmax(0,1fr));gap:.8em}
-  #achievement .ach{grid-template-columns:3em 1fr;gap:.7em;padding:.7em;border-width:3px}
-  #achievement .ach .ic{width:2em;height:2em;font-size:1.5em;border-width:2px}
-  #achievement .ach h3{font-size:1em}
-  #achievement .ach p{font-size:.85em;margin:.15em 0 .4em}
-  #achievement .stars{font-size:.9em}
-  #achievement .reward{font-size:.75em}
-  #achievement .ach .btn{font-size:.85em;padding:.25em .9em;margin-top:.5em}
+  /* achievements - 5 columns x 3 rows grid (steady, no scroll) */
+  #achievement.active{justify-content:center}
+  #achievement .panel{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;margin:0;padding:.5em .8em}
+  #achievement .trophy-head{flex:none;margin-bottom:.4em}
+  #achievement .trophies{font-size:1.25em;padding:.1em .7em}
+  #achievement .ach-list{flex:1;min-height:0;overflow:hidden;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:.45em}
+  #achievement .ach{grid-template-columns:2.2em 1fr;gap:.45em;padding:.4em .5em;border-width:2px;align-items:center}
+  #achievement .ach .ic{width:1.9em;height:1.9em;font-size:1.1em;border-width:2px}
+  #achievement .ach-top{font-size:.62em;margin-bottom:1px}
+  #achievement .ach h3{font-size:.84em;line-height:1.1}
+  #achievement .ach p{font-size:.68em;line-height:1.15;margin:.1em 0 .25em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  #achievement .stars{font-size:.7em}
+  #achievement .reward{font-size:.62em;padding:1px 5px}
+  #achievement .ach-actions{padding-top:3px;gap:4px}
+  #achievement .ach .btn{font-size:.7em;padding:.15em .5em}
+
+  /* family */
+  #family.active{justify-content:center}
+  #family .panel{margin:0;padding:.9em 1em}
   #family .banner{gap:1em;margin-bottom:.8em}
   #family .crest{font-size:1.6em;width:2.6em;height:3em;border-width:4px}
   #family .banner h3{font-size:1.8em!important}
