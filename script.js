@@ -169,7 +169,7 @@ const achs=[
 ];
 const fam=[
  {name:"Mother",role:"leader",title:"Guardian",desc:"The heart of the crew. Her love is my strongest power-up. 💕",imgs:[["mother.jpg","50% 35%","No.1 Supporter 💕"],["mother2.jpg","50% 40%","Hugs with Bossing"],["mother3.jpg","50% 40%","Dragon Mode"]]},
- {name:"Father",role:"leader",title:"Guardian",desc:"The silent anchor. Keeps the ship steady, no matter the storm. ⚓",imgs:[["father.jpg","25% 35%","ATM Machine Ko 💳"],["father2.jpg","50% 40%","Papa's Boy Mode"],["father3.jpg","50% 40%","Papa's Boy Mode"]]},
+ {name:"Father",role:"leader",title:"Guardian",desc:"The silent anchor. Keeps the ship steady, no matter the storm. ⚓",imgs:[["father.jpg","25% 35%"," The ATM Machine 💳"]]},
  {name:"Siblings",role:"elder",title:"Lookouts",desc:"Loud, chaotic, loyal. My crew of lookouts and my daily boss fights. 😂",imgs:[["siblings.jpg","50% 70%","MINIONS"],["siblings2.jpg","50% 45%","My no.1 kalaban"],["siblings3.jpg","50% 35%","Miss Sungit"],["siblings4.jpg","54% 40%","The Boss"]]}
 ];
 const familyPic={img:"family.jpg",name:"The Whole Crew Trough Everything Together⚓"};
