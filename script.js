@@ -168,25 +168,25 @@ const achs=[
  }
 ];
 const fam=[
- {name:"Mother",role:"leader",title:"Guardian",bounty:"4.2M",support:"Max energy",imgs:[["mother.jpg","50% 35%","No.1 Supporter 💕"],["mother2.jpg","50% 40%","Hugs with Bossing"],["mother3.jpg","50% 40%","Dragon Mode"]]},
- {name:"Father",role:"leader",title:"Guardian",bounty:"4.15M",support:"Max support",imgs:[["father.jpg","25% 35%","ATM Machine Ko 💳"],["father2.jpg","50% 40%","Papa's Boy Mode"],["father3.jpg","50% 40%","Papa's Boy Mode"]]},
- {name:"Siblings",role:"elder",title:"Lookouts",bounty:"1.9M",support:"Cheer squad",imgs:[["siblings.jpg","50% 70%","MINIONS"],["siblings2.jpg","50% 45%","My NO.1 KALABAN"],["siblings3.jpg","50% 35%","Miss Sungit"],["siblings4.jpg","54% 40%","Buraot sista"]]}
+ {name:"Mother",role:"leader",title:"Guardian",desc:"The heart of the crew. Her love is my strongest power-up. 💕",imgs:[["mother.jpg","50% 35%","No.1 Supporter 💕"],["mother2.jpg","50% 40%","Hugs with Bossing"],["mother3.jpg","50% 40%","Dragon Mode"]]},
+ {name:"Father",role:"leader",title:"Guardian",desc:"The silent anchor. Keeps the ship steady, no matter the storm. ⚓",imgs:[["father.jpg","25% 35%","ATM Machine Ko 💳"],["father2.jpg","50% 40%","Papa's Boy Mode"],["father3.jpg","50% 40%","Papa's Boy Mode"]]},
+ {name:"Siblings",role:"elder",title:"Lookouts",desc:"Loud, chaotic, loyal. My crew of lookouts and my daily boss fights. 😂",imgs:[["siblings.jpg","50% 70%","MINIONS"],["siblings2.jpg","50% 45%","My no.1 kalaban"],["siblings3.jpg","50% 35%","Miss Sungit"],["siblings4.jpg","54% 40%","The Boss"]]}
 ];
 const familyPic={img:"family.jpg",name:"The Whole Crew Trough Everything Together⚓"};
 // Friends gallery: edit captions or add more {img,name} lines.
 const friends=[
- {img:"friend1.jpg",name:"Ball Is Life 🏀"},
- {img:"friend2.jpg",name:"With the Boys"},
- {img:"friend3.jpg",name:"Court Kings"},
- {img:"friend4.jpg",name:"Full Throttle"},
- {img:"friend5.jpg",name:"Ride or Die"},
- {img:"friend6.jpg",name:"Mga d Naliligo"},
- {img:"friend7.jpg",name:"Big boss & Classmates"},
- {img:"friend8.jpg",name:"Mga Idolo"},
- {img:"friend9.jpg",name:"Tropapits"}
+ {img:"friend1.jpg",name:"Ball Is Life 🏀",desc:"Same court, same hustle. Every game feels like the finals."},
+ {img:"friend2.jpg",name:"With the Boys",desc:"No plans, no problem. The squad makes any day a good one."},
+ {img:"friend3.jpg",name:"Court Kings",desc:"Sneakers squeaking, trash talk flying. We rule this court."},
+ {img:"friend4.jpg",name:"Full Throttle",desc:"Fast, loud, and always up for the next adventure."},
+ {img:"friend5.jpg",name:"Ride or Die",desc:"Through every ride and every mess, they've got my back."},
+ {img:"friend6.jpg",name:"Mga d Naliligo",desc:"Splashing around like there's no tomorrow. Zero worries."},
+ {img:"friend7.jpg",name:"Big boss & Classmates",desc:"Classmates turned crew. Study buddies and certified troublemakers."},
+ {img:"friend8.jpg",name:"Mga Idolo",desc:"The legends I look up to (and roast daily)."},
+ {img:"friend9.jpg",name:"Tropapits",desc:"Tropa forever. Loud laughs, lasting memories."}
 ];
 // Best friend: replace null with {img:"bestfriend.jpg",name:"Name",pos:"50% 35%"} to fill the reserved spot.
-const bestFriend={img:"bestfriend.jpg",name:"Bestie",pos:"50% 55%",cap:"My Other Half 💕"};
+const bestFriend={img:"bestfriend.jpg",name:"Bestie",pos:"50% 55%",cap:"My Other Half 💕",desc:"Partner in crime, first mate in every adventure. 🤝"};
 
 // ---- audio ----
 let ac=null,on=true;
@@ -253,23 +253,23 @@ groups.forEach((g,gi)=>paint(gi));
 document.getElementById("ct").textContent=achs.length;
 function openPhoto(src,t,meta){certTitle.textContent=t;certMeta.textContent=meta;certImg.src=src;certImg.alt=t;sfx("click");modal.showModal()}
 const rosterEl=document.getElementById("roster"),friendsEl=document.getElementById("friendsView");
-const famCard=(m,i)=>`<figure class="mem" data-m="${i}"><div class="ph"><img src="${m.imgs[0][0]}" alt="${m.name}" style="object-position:${m.imgs[0][1]}"><span class="fcap">${m.imgs[0][2]||""}</span>${m.imgs.length>1?`<button type="button" class="nv prev" aria-label="Previous photo">‹</button><button type="button" class="nv next" aria-label="Next photo">›</button><span class="cnt">1 / ${m.imgs.length}</span>`:""}</div><figcaption><h3>${m.name}</h3><span class="role ${m.role}">${m.title}</span><div class="stat"><span>Bounty</span><b>฿ ${m.bounty}</b></div><div class="stat"><span>Support</span><b>${m.support}</b></div></figcaption></figure>`;
+const famCard=(m,i)=>`<figure class="mem" data-m="${i}"><div class="ph"><img src="${m.imgs[0][0]}" alt="${m.name}" style="object-position:${m.imgs[0][1]}"><span class="fcap">${m.imgs[0][2]||""}</span>${m.imgs.length>1?`<button type="button" class="nv prev" aria-label="Previous photo">‹</button><button type="button" class="nv next" aria-label="Next photo">›</button><span class="cnt">1 / ${m.imgs.length}</span>`:""}</div><figcaption><h3>${m.name}</h3><span class="role ${m.role}">${m.title}</span><p class="mdesc">${m.desc||""}</p></figcaption></figure>`;
 rosterEl.innerHTML=`<figure class="mem group"><button type="button" class="fmain" id="gpic" style="--bg:url('${familyPic.img}')" aria-label="Enlarge family photo"><img src="${familyPic.img}" alt="${familyPic.name}"><span class="fcap">👨‍👩‍👧‍👦 ${familyPic.name}</span></button></figure>`+fam.map(famCard).join("");
 rosterEl.addEventListener("click",e=>{
  const fig=e.target.closest(".mem[data-m]"),nv=e.target.closest(".nv");
  if(fig&&nv){const m=fam[+fig.dataset.m];const k=((+fig.dataset.k||0)+(nv.classList.contains("next")?1:-1)+m.imgs.length)%m.imgs.length;fig.dataset.k=k;const im=fig.querySelector("img");im.src=m.imgs[k][0];im.style.objectPosition=m.imgs[k][1];fig.querySelector(".fcap").textContent=m.imgs[k][2]||"";fig.querySelector(".cnt").textContent=`${k+1} / ${m.imgs.length}`;sfx("toggle");return}
  if(fig&&e.target.closest(".ph img")){const m=fam[+fig.dataset.m],k=+fig.dataset.k||0;openPhoto(m.imgs[k][0],m.name,`${m.imgs[k][2]||"Family"} · ${k+1} / ${m.imgs.length}`);return}
  if(e.target.closest("#gpic"))openPhoto(familyPic.img,familyPic.name,"Family")});
-friendsEl.innerHTML=`<div class="friends"><h3 class="fh">🤝 Friends <span id="fcount"></span></h3><div class="fview"><button type="button" class="fmain" id="fmain" aria-label="Enlarge photo"><img id="fimg" alt=""><span class="fcap" id="fcap"></span></button><div class="fthumbs" id="fthumbs"></div></div></div>`
- +`<div class="friends bffcol"><h3 class="fh">👑 Best Friend</h3>`+(bestFriend?`<figure class="mem"><div class="ph"><img src="${bestFriend.img}" alt="${bestFriend.name}" style="object-position:${bestFriend.pos||"50% 35%"}"><span class="fcap">${bestFriend.cap||""}</span></div><figcaption><h3>${bestFriend.name}</h3><span class="role co">Best Friend</span></figcaption></figure>`:`<div class="slot-empty"><span aria-hidden="true">＋</span><b>Reserved</b><small>Best friend photo coming soon</small></div>`)+`</div>`;
+friendsEl.innerHTML=`<div class="friends"><h3 class="fh">🤝 Friends <span id="fcount"></span></h3><div class="fview"><button type="button" class="fmain" id="fmain" aria-label="Enlarge photo"><img id="fimg" alt=""><span class="fcap" id="fcap"></span></button><p class="fdesc" id="fdesc"></p><div class="fthumbs" id="fthumbs"></div></div></div>`
+ +`<div class="friends bffcol"><h3 class="fh">👑 Best Friend</h3>`+(bestFriend?`<figure class="mem"><div class="ph"><img src="${bestFriend.img}" alt="${bestFriend.name}" style="object-position:${bestFriend.pos||"50% 35%"}"><span class="fcap">${bestFriend.cap||""}</span></div><figcaption><h3>${bestFriend.name}</h3><span class="role co">Best Friend</span><p class="mdesc">${bestFriend.desc||""}</p></figcaption></figure>`:`<div class="slot-empty"><span aria-hidden="true">＋</span><b>Reserved</b><small>Best friend photo coming soon</small></div>`)+`</div>`;
 friendsEl.addEventListener("click",e=>{if(bestFriend&&e.target.closest(".bffcol .ph img"))openPhoto(bestFriend.img,bestFriend.name,(bestFriend.cap||"Best Friend"))});
 document.querySelectorAll(".ftab").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".ftab").forEach(x=>x.classList.toggle("current",x===b));rosterEl.hidden=b.dataset.v!=="family";friendsEl.hidden=b.dataset.v!=="friends"}));
 (function(){
  if(!friends.length)return;
- const main=document.getElementById("fmain"),img=document.getElementById("fimg"),cap=document.getElementById("fcap"),th=document.getElementById("fthumbs"),cnt=document.getElementById("fcount");
+ const main=document.getElementById("fmain"),img=document.getElementById("fimg"),cap=document.getElementById("fcap"),fd=document.getElementById("fdesc"),th=document.getElementById("fthumbs"),cnt=document.getElementById("fcount");
  let i=0,t,hold=false;
  th.innerHTML=friends.map((f,n)=>`<button type="button" class="fth" data-i="${n}" aria-label="${f.name}"><img src="${f.img}" alt=""></button>`).join("");
- function go(n){i=(n+friends.length)%friends.length;const f=friends[i];img.src=f.img;img.alt=f.name;main.style.setProperty("--bg",`url("${f.img}")`);cap.textContent=f.name;cnt.textContent=`${i+1} / ${friends.length}`;th.querySelectorAll(".fth").forEach((b,k)=>b.classList.toggle("on",k===i))}
+ function go(n){i=(n+friends.length)%friends.length;const f=friends[i];img.src=f.img;img.alt=f.name;main.style.setProperty("--bg",`url("${f.img}")`);cap.textContent=f.name;fd.textContent=f.desc||"";cnt.textContent=`${i+1} / ${friends.length}`;th.querySelectorAll(".fth").forEach((b,k)=>b.classList.toggle("on",k===i))}
  function tick(){clearInterval(t);t=setInterval(()=>{if(!hold&&!friendsEl.hidden&&document.getElementById("family").classList.contains("active")&&!modal.open)go(i+1)},5000)}
  th.addEventListener("click",e=>{const b=e.target.closest(".fth");if(b){go(+b.dataset.i);sfx("toggle");tick()}});
  main.addEventListener("click",()=>openPhoto(friends[i].img,friends[i].name,`Friends · ${i+1} / ${friends.length}`));
